@@ -1,0 +1,27 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+pre {
+    overflow: auto;
+    border-left: 8px solid #3c4654;
+    margin: 0 0 1.25rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+pre.highlight {
+    background: #101010;
+    color: #f8f8f2;
+    padding: 1.5625rem;
+}
