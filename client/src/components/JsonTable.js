@@ -15,15 +15,14 @@ export default class JsonTable extends React.Component {
       })
   }
                 
-  // <li key={jsonDataPoint.height}>{jsonDataPoint.epoch}</li>
   render() {
     return (
       <div>
-      <ul>
-        {
+       
+       <h1>Cardano Mainnet full blockcain DB </h1> {
           this.state.jsonData
             .map(jsonDataPoint =>
-              
+            <div>
               <table>
               <tbody>
                 <tr>
@@ -73,20 +72,32 @@ export default class JsonTable extends React.Component {
                 </tr>
                 <tr>
                   <td>Download link:</td>
-                  <td><a rel="noreferrer" href={'https://download.csnapshots.io/mainnet/mainnet-db-' + jsonDataPoint.slot + '.tar.lz4'} className="jsonLink" target="_blank">
+                  <td><div><a rel="noreferrer" href={'https://download.csnapshots.io/mainnet/mainnet-db-' + jsonDataPoint.slot + '.tar.lz4'} className="jsonLink" target="_blank">
                     {'https://download.csnapshots.io/mainnet/mainnet-db-' + jsonDataPoint.slot + '.tar.lz4'}
-                    </a></td>
+                    </a></div><div className='checkSum'>checksum: {jsonDataPoint.checksum}</div></td>
                 </tr>
                 </tbody>
-              </table>              
+              </table>      
+              
+<h2>Quick way to download to your server and extract files: </h2>
+<div className="highlight">
+  <pre className="highlight">
+    <code>{'curl -s https://download.csnapshots.io/mainnet/mainnet-db-' + jsonDataPoint.slot + '.tar.lz4'}| lz4 -c -d - | tar -x -C /home/cardano/cnode/db/ </code>
+  </pre>
+  curl -s https://download.csnapshots.io/mainnet/mainnet-db-59256983.tar.lz4 | lz4 -c -d - | tar -x -C .
+<h2>To install lz4:</h2>
+<pre className="highlight">
+<code>sudo apt update && sudo apt install liblz4-tool
+</code>
+</pre>
+
+</div>
+</div>
             )
         }
-      </ul>
-    
-   
-  
-    
         </div>
+
+     
     )
   }
 }
