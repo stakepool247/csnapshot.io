@@ -5,7 +5,7 @@ const Mainnet = () => {
   <div className='snapshot-container'>
         <div className="card-frame">   
         <JsonTable />
-</div>
+  </div>
 </div>
   )
 }
