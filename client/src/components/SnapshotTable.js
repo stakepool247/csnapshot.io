@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import './SnapshotTable.css';
 
-function SnapshotTable() {
+function SnapshotTable({ chain }) {
 	const [jsonItems, setJsonItems] = useState([]);
+	const [jsonError, setJsonError] = useState(false);
 
 	useEffect(() => {
-		fetch('https://download.csnapshots.io/mainnet/mainnet-db-snapshot.json')
+		fetch('https://data.csnapshots.io/' + chain + '-db-snapshot.json')
 			.then((response) => response.json())
-			.then((json) => setJsonItems(json));
-		console.log('useEffect trigger');
-	}, []);
+			.then((json) => setJsonItems(json))
+			.catch((err) => setJsonError(true));
+	}, [chain]);
 
 	return (
-		<div className='App'>
+		<div>
+			{jsonError && <div className='error'>Error, can't load Json data!</div>}
 			{jsonItems.map((jsonDataPoint) => {
 				return (
 					<div>
@@ -99,7 +102,11 @@ function SnapshotTable() {
 						<div className='highlight'>
 							<pre className='highlight'>
 								<code>
-									{'curl -s https://download.csnapshots.io/mainnet/mainnet-db-' +
+									{'curl -s https://download.csnapshots.io/' +
+										chain +
+										'/' +
+										chain +
+										'-db-' +
 										jsonDataPoint.slot +
 										'.tar.lz4'}
 									| lz4 -c -d - | tar -x -C /home/cardano/cnode/db/{' '}
@@ -110,7 +117,11 @@ function SnapshotTable() {
 						<pre>
 							<code>
 								{' '}
-								{'curl -s https://download.csnapshots.io/mainnet/mainnet-db-' +
+								{'curl -s https://download.csnapshots.io/' +
+									chain +
+									'/' +
+									chain +
+									'-db-' +
 									jsonDataPoint.slot +
 									'.tar.lz4'}{' '}
 								| lz4 -c -d - | tar -x -C .
