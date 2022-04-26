@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-
 export default class JsonTable extends React.Component {
   state = {
     jsonData: []
@@ -14,7 +13,7 @@ export default class JsonTable extends React.Component {
         this.setState({ jsonData });  
       })
   }
-                
+
   render() {
     return (
       <div>
@@ -84,7 +83,13 @@ export default class JsonTable extends React.Component {
   <pre className="highlight">
     <code>{'curl -s https://download.csnapshots.io/mainnet/mainnet-db-' + jsonDataPoint.slot + '.tar.lz4'}| lz4 -c -d - | tar -x -C /home/cardano/cnode/db/ </code>
   </pre>
-  curl -s https://download.csnapshots.io/mainnet/mainnet-db-59256983.tar.lz4 | lz4 -c -d - | tar -x -C .
+  </div>
+
+
+
+ <pre>
+<code> {'curl -s https://download.csnapshots.io/mainnet/mainnet-db-' + jsonDataPoint.slot + '.tar.lz4'} | lz4 -c -d - | tar -x -C .</code></pre>
+
 <h2>To install lz4:</h2>
 <pre className="highlight">
 <code>sudo apt update && sudo apt install liblz4-tool
@@ -92,10 +97,9 @@ export default class JsonTable extends React.Component {
 </pre>
 
 </div>
-</div>
             )
         }
-        </div>
+      </div>
 
      
     )
