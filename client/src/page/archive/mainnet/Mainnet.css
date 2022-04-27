@@ -1,0 +1,45 @@
+h2 {
+	margin-top: 15px;
+	padding-top: 15px;
+}
+
+.jsonLink {
+	color: #084311;
+	background-color: #d5f3c9;
+	border-radius: 0.1875rem;
+	padding: 0.125rem 0.375rem 0.1875rem 0.375rem;
+}
+.checkSum {
+	color: #3c4654;
+	font-size: 9px;
+	padding-top: 10px;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 60%;
+}
+
+td,
+th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+pre {
+	overflow: auto;
+	border-left: 8px solid #3c4654;
+	margin: 0 0 1.25rem 0;
+	-webkit-overflow-scrolling: touch;
+}
+
+pre.highlight {
+	background: #101010;
+	color: #f8f8f2;
+	padding: 1.5625rem;
+}
