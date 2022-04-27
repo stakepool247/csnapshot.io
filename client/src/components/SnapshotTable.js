@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './SnapshotTable.css';
+// import '../page/mainnet/Mainnet.css';
+
+function getChainExplorerUrl(chain) {
+	if (chain === 'testnet') {
+		return 'https://testnet.adaex.org/block/';
+	} else {
+		return 'https://adapools.org/blocks/';
+	}
+}
 
 function SnapshotTable({ chain }) {
 	const [jsonItems, setJsonItems] = useState([]);
@@ -22,7 +31,7 @@ function SnapshotTable({ chain }) {
 							<tbody>
 								<tr>
 									<th>Cardano Chain</th>
-									<th>Mainnet</th>
+									<th className='capitalise'>{chain}</th>
 								</tr>
 
 								<tr>
@@ -45,8 +54,7 @@ function SnapshotTable({ chain }) {
 										<a
 											rel='noreferrer'
 											href={
-												'https://adapools.org/blocks/' +
-												jsonDataPoint.block_hash
+												getChainExplorerUrl(chain) + jsonDataPoint.block_hash
 											}
 											className='jsonLink'
 											target='_blank'
@@ -78,16 +86,18 @@ function SnapshotTable({ chain }) {
 											<a
 												rel='noreferrer'
 												href={
-													'https://download.csnapshots.io/mainnet/mainnet-db-' +
-													jsonDataPoint.slot +
-													'.tar.lz4'
+													'https://download.csnapshots.io/' +
+													chain +
+													'/' +
+													jsonDataPoint.file_name
 												}
 												className='jsonLink'
 												target='_blank'
 											>
-												{'https://download.csnapshots.io/mainnet/mainnet-db-' +
-													jsonDataPoint.slot +
-													'.tar.lz4'}
+												{'https://download.csnapshots.io/' +
+													chain +
+													'/' +
+													jsonDataPoint.file_name}
 											</a>
 										</div>
 										<div className='checkSum'>
