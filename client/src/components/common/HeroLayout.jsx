@@ -1,6 +1,5 @@
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import BgStrap from './BgStrap'
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 
 export default function HeroLayout({ sx, children }) {
 	return (
@@ -14,7 +13,6 @@ export default function HeroLayout({ sx, children }) {
 				backgroundRepeat: 'no-repeat',
 			}}
 		>
-			{/* <BgStrap /> */}
 			<Box
 				sx={{
 					py: 10,
@@ -22,8 +20,8 @@ export default function HeroLayout({ sx, children }) {
 					...sx,
 				}}
 			>
-				<Container maxWidth="xl">{children}</Container>
+				<Container maxWidth='xl'>{children}</Container>
 			</Box>
 		</Box>
-	)
+	);
 }
