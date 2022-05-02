@@ -1,44 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
-
+html {
+	scroll-behavior: smooth;
+}
 * {
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
 }
-
-ul {
-  list-style-type: none;
-}
-
-a {
-text-decoration: none;
-color: black;
-
-}
-
 body {
-  font-family: 'Raleway', sans-serif;
-  background: rgb(227, 225, 225);
-
+	margin: 0;
+	font-family: 'Fira Code', monospace;
+	font-family: 'Raleway', sans-serif;
 }
-
-.contaonter {
-  max-width: 1240px;
-  /* max-width: 80%; */
-  margin: auto;
+a {
+	color: initial;
+	text-decoration: none;
 }
-
-
-.btn{
-  padding: 12px 24px;
-  color: white;
-  background-image: linear-gradient(45deg, rgb(47, 47, 228), rgb(4, 3, 35));
-  border-radius: 6px;
-  transition: .4s;
-  cursor: pointer;
-  font-size: 1rem;
+a.tdu:hover {
+	text-decoration: underline;
+	text-decoration-color: currentColor;
 }
-
-.btn :active{
-
-  transform: translate(4px);
- }
+.bookmarkOffset::before {
+	content: '';
+	display: block;
+	height: 150px;
+	margin-top: -150px;
+	visibility: hidden;
+}
