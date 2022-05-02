@@ -6,7 +6,6 @@ import CopyIcon from '@mui/icons-material/ContentCopy';
 import CheckCircle from '@mui/icons-material/CheckCircleOutline';
 import { alpha } from '@mui/material/styles';
 import { copyButton, terminalContainer } from './styles';
-import BgStrap from './BgStrap';
 import { useState } from 'react';
 
 export default function Terminal({ cmd, subcmd, sx, ...rest }) {
@@ -21,7 +20,6 @@ export default function Terminal({ cmd, subcmd, sx, ...rest }) {
 	return (
 		<Box>
 			<Box {...rest} sx={{ ...terminalContainer, ...sx }}>
-				{/* <BgStrap /> */}
 				<Box className='terminalCode'>
 					<Stack direction='row' spacing={1.25}>
 						<Typography color='#4B5A6D' variant='firacode1'>
