@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -57,9 +58,8 @@ export default function Main() {
 					blockchain database which are updated daily.
 					<br />
 					<br />
-					In order to fully automate your recovery mechanism, we provide
-					permalinks: URLs that never change and reliably point to a recent
-					snapshot.
+					In order to fully automate your recovery mechanism, you can use the
+					commandline bellow.
 					<br />
 					<br />
 					In the instructions below, we assume that the user is{' '}
@@ -67,35 +67,37 @@ export default function Main() {
 					<Code text='/home/cardano/cnode/db' />.
 					<Box sx={{ mt: 5, mb: 2 }}>
 						<Typography marginBottom={2}>
-							To download a recent snapshot of the database use one of the
-							following permalinks: <br />
-							for Mainnet: <br />
+							To download a recent snapshot of the database use in your server's
+							terminal one of the following commands: <br />
+							<Typography variant='h5' paddingTop={3}>
+								For Mainnet:
+							</Typography>
 							<Code
-								text='curl
-							https://csnapshots.io/mainnet-snapshot -output
-							testnet-snapshot.tar.lz4'
+								text='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  -output
+							mainnet-snapshot.tar.lz4'
 							/>
 							<br />
-							for Testnet:
-							<br />
+							<Typography variant='h5' paddingTop={3}>
+								For Testnet:
+							</Typography>
 							<Code
-								text='curl
-							curl
-							https://csnapshots.io/testnet-snapshot -output
+								text='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  -output
 							testnet-snapshot.tar.lz4'
 							/>
 							<br />
 							<br />
 							<Typography variant='h4' paddingTop={5}>
-								The quick way to download and extract files:
+								The quick way to download and extract files to{' '}
+								<Code text='/home/cardano/cnode/db' />
+								.:
 							</Typography>
 						</Typography>
 						<Typography variant='h5'>For Mainnet:</Typography>
-						<Terminal cmd='curl -o -  https://csnapshots.io/mainnet-snapshot | lz4 -cvd - | tar -x -C /home/cardano/cnode/' />
+						<Terminal cmd='curl -o - https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
 						<Typography variant='h5' paddingTop={4}>
 							For Testnet:
 						</Typography>
-						<Terminal cmd='curl -o -  https://csnapshots.io/testnet-snapshot | lz4 -cvd - | tar -x -C /home/cardano/cnode/' />
+						<Terminal cmd='curl -o - https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
 					</Box>
 					<Typography variant='h4' paddingTop={5}>
 						The "manual" way to download and extract files:
@@ -109,11 +111,35 @@ export default function Main() {
 					</Typography>
 					<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
 					<Typography marginLeft={2} marginTop={2}>
-						{' '}
 						2. Downloading Database:
 					</Typography>
-					<Terminal cmd='curl https://download.csnapshots.io/mainnet/mainnet-db.tar.lz4  --output mainnet-db.tar.lz4  ' />
-					<Terminal cmd='curl -o -  https://csnapshots.io/mainnet-snapshot | lz4 -cvd - | tar -x -C /home/cardano/cnode/' />
+					<Terminal
+						cmd='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  -output
+							mainnet-snapshot.tar.lz4'
+					/>
+					<Typography marginLeft={2} marginTop={2}>
+						3. Extracting Database:
+					</Typography>
+					<Terminal cmd='lz4 -dvc --no-sparse mainnet-db.tar.lz4 | tar x -C ${CARDANO_BASE}' />
+					<Typography variant='h5' paddingTop={3}>
+						For Testnet:
+					</Typography>
+					<Typography marginLeft={2} marginTop={2}>
+						{' '}
+						1. Setting Database folder:
+					</Typography>
+					<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
+					<Typography marginLeft={2} marginTop={2}>
+						2. Downloading Database:
+					</Typography>
+					<Terminal
+						cmd='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  -output
+							testnet-snapshot.tar.lz4'
+					/>
+					<Typography marginLeft={2} marginTop={2}>
+						3. Extracting Database:
+					</Typography>
+					<Terminal cmd='lz4 -dvc --no-sparse testnet-db.tar.lz4 | tar x -C ${CARDANO_BASE}' />
 				</Typography>
 			</Box>
 			<Box sx={{ mb: 8 }} className='bookmarkOffset' id='How_does_it_work'>
@@ -134,12 +160,9 @@ export default function Main() {
 					component='div'
 				>
 					<Typography sx={{ mb: 2 }}>
-						The snapshot generation engine is deployed on Google Kubernetes
-						Engine.
-					</Typography>
-					<Typography>
-						All source code is open source so anyone can deploy a separate
-						snapshot generator setup in the cloud.
+						Every day we are generating new snapshots and uploading to CDN
+						service which redistributes the database to servers around the world
+						for faster download speeds
 					</Typography>
 				</Typography>
 			</Box>
@@ -200,9 +223,8 @@ export default function Main() {
 				>
 					<Typography sx={{ mb: 2 }}>
 						Users are solely responsible for any risks associated with usage of
-						the cSnapshots network. Users should do their own research to
-						determine if cSnapshots is the appropriate platform for their needs
-						and should apply judgement and care in their network interactions.
+						the cSnapshots tool. All users should do their own research to
+						determine if cSnapshots is the right tool for their needs.
 					</Typography>
 					<Typography>
 						Unless required by applicable law or agreed to in writing,
