@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Terminal from '../../components/common/Terminal';
+import { Alert, AlertTitle } from '@mui/material';
+import { terminalContainer } from '../../components/common/styles';
 
 export default function QuickDownload() {
 	return (
@@ -17,8 +19,14 @@ export default function QuickDownload() {
 					cmd='sudo apt update &amp;&amp; sudo apt install liblz4-tool'
 				/>
 				<Typography variant='h4' marginBottom={3} marginTop={2}>
-					2. Download and uncompress files:
+					2. Download and extract the files:
 				</Typography>
+				<Box sx={terminalContainer} marginBottom={3}>
+					<Alert severity='warning' marginBottom={3} marginTop={1}>
+						<AlertTitle>Warning</AlertTitle>
+						This will add/replace the data in /home/cardano/cnode/db directory
+					</Alert>
+				</Box>
 				<Terminal
 					cmd='curl -o - https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/'
 					subcmd='This will add/replace the data in /home/cardano/cnode/db directory'
