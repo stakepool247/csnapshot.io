@@ -20,7 +20,7 @@ export default function QuickDownload() {
 					2. Download and uncompress files:
 				</Typography>
 				<Terminal
-					cmd='curl -o - https://csnapshots.io/testnet-snapshot | lz4 -c -d - | tar -x -C /home/cardano/cnode/'
+					cmd='curl -o - https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/'
 					subcmd='This will add/replace the data in /home/cardano/cnode/db directory'
 				/>
 			</Box>
