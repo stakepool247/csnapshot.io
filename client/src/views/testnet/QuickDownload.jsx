@@ -32,6 +32,15 @@ export default function QuickDownload() {
 					subcmd='This will add/replace the data in /home/cardano/cnode/db directory'
 				/>
 			</Box>
+			<Box sx={terminalContainer} marginTop={4}>
+				<Alert severity='info' marginBottom={3} marginTop={1}>
+					<AlertTitle>Info</AlertTitle>
+					Here is info how to download "manualy" the snapshot:{' '}
+					<a href='https://cSnapshots.io/about#Manual_download'>
+						https://cSnapshots.io/about#Manual_download
+					</a>
+				</Alert>
+			</Box>
 		</Box>
 	);
 }
