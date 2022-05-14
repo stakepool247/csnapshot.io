@@ -11,6 +11,11 @@ export const heads = [
 	},
 	{
 		id: 3243464,
+		url: '#Manual_download',
+		text: 'Manual Download?',
+	},
+	{
+		id: 3243464,
 		url: '#How_does_it_work',
 		text: 'How does it work ?',
 	},

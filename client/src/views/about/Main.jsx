@@ -99,48 +99,59 @@ export default function Main() {
 						</Typography>
 						<Terminal cmd='curl -o - https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
 					</Box>
-					<Typography variant='h4' paddingTop={5}>
-						The "manual" way to download and extract files:
-					</Typography>
-					<Typography variant='h5' paddingTop={3}>
-						For Mainnet:
-					</Typography>
-					<Typography marginLeft={2} marginTop={2}>
-						{' '}
-						1. Setting Database folder:
-					</Typography>
-					<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
-					<Typography marginLeft={2} marginTop={2}>
-						2. Downloading Database:
-					</Typography>
-					<Terminal
-						cmd='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  -output
-							mainnet-snapshot.tar.lz4'
-					/>
-					<Typography marginLeft={2} marginTop={2}>
-						3. Extracting Database:
-					</Typography>
-					<Terminal cmd='lz4 -dvc --no-sparse mainnet-db.tar.lz4 | tar x -C ${CARDANO_BASE}' />
-					<Typography variant='h5' paddingTop={3}>
-						For Testnet:
-					</Typography>
-					<Typography marginLeft={2} marginTop={2}>
-						{' '}
-						1. Setting Database folder:
-					</Typography>
-					<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
-					<Typography marginLeft={2} marginTop={2}>
-						2. Downloading Database:
-					</Typography>
-					<Terminal
-						cmd='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  -output
-							testnet-snapshot.tar.lz4'
-					/>
-					<Typography marginLeft={2} marginTop={2}>
-						3. Extracting Database:
-					</Typography>
-					<Terminal cmd='lz4 -dvc --no-sparse testnet-db.tar.lz4 | tar x -C ${CARDANO_BASE}' />
 				</Typography>
+			</Box>
+			<Box sx={{ mb: 8 }} className='bookmarkOffset' id='Manual_download'>
+				<Stack
+					direction='row'
+					spacing={2}
+					sx={{ mb: 2, alignItems: 'flex-end' }}
+				>
+					<Typography variant='body2' sx={{ transform: 'translateY(-5px)' }}>
+						03
+					</Typography>
+					<a href='#How_does_it_work'>
+						<Typography variant='h3'>Manual Download</Typography>
+					</a>
+				</Stack>
+				<Typography variant='h5' paddingTop={3}>
+					For Mainnet:
+				</Typography>
+				<Typography marginLeft={2} marginTop={2}>
+					{' '}
+					1. Setting Database folder:
+				</Typography>
+				<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
+				<Typography marginLeft={2} marginTop={2}>
+					2. Downloading Database:
+				</Typography>
+				<Terminal
+					cmd='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  -output
+							mainnet-snapshot.tar.lz4'
+				/>
+				<Typography marginLeft={2} marginTop={2}>
+					3. Extracting Database:
+				</Typography>
+				<Terminal cmd='lz4 -dvc --no-sparse mainnet-db.tar.lz4 | tar x -C ${CARDANO_BASE}' />
+				<Typography variant='h5' paddingTop={3}>
+					For Testnet:
+				</Typography>
+				<Typography marginLeft={2} marginTop={2}>
+					{' '}
+					1. Setting Database folder:
+				</Typography>
+				<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
+				<Typography marginLeft={2} marginTop={2}>
+					2. Downloading Database:
+				</Typography>
+				<Terminal
+					cmd='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  -output
+							testnet-snapshot.tar.lz4'
+				/>
+				<Typography marginLeft={2} marginTop={2}>
+					3. Extracting Database:
+				</Typography>
+				<Terminal cmd='lz4 -dvc --no-sparse testnet-db.tar.lz4 | tar x -C ${CARDANO_BASE}' />
 			</Box>
 			<Box sx={{ mb: 8 }} className='bookmarkOffset' id='How_does_it_work'>
 				<Stack
@@ -149,7 +160,7 @@ export default function Main() {
 					sx={{ mb: 2, alignItems: 'flex-end' }}
 				>
 					<Typography variant='body2' sx={{ transform: 'translateY(-5px)' }}>
-						03
+						04
 					</Typography>
 					<a href='#How_does_it_work'>
 						<Typography variant='h3'>How does it work</Typography>
@@ -177,7 +188,7 @@ export default function Main() {
 					sx={{ mb: 2, alignItems: 'flex-end' }}
 				>
 					<Typography variant='body2' sx={{ transform: 'translateY(-5px)' }}>
-						04
+						05
 					</Typography>
 					<a href='#Brought_to_you_by_StakePool247'>
 						<Typography variant='h3'>

@@ -12,11 +12,11 @@ export default function QuickDownload() {
 					Quick way to download snapshot to your server and extract files
 				</Typography>
 				<Typography variant='h4' marginBottom={3} marginTop={2}>
-					1. Update / install lz4 tool:
+					1. Update / install curl, jq and lz4 tool:
 				</Typography>
 				<Terminal
 					sx={{ mt: 2 }}
-					cmd='sudo apt update &amp;&amp; sudo apt install liblz4-tool'
+					cmd='sudo apt update &amp;&amp; sudo apt install liblz4-tool jq curl'
 				/>
 				<Typography variant='h4' marginBottom={3} marginTop={2}>
 					2. Download and extract the files:
