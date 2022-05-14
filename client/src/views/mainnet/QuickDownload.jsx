@@ -11,11 +11,11 @@ export default function QuickDownload() {
 				Quick way to download snapshot to your server and extract files
 			</Typography>
 			<Typography variant='h4' marginBottom={3} marginTop={2}>
-				1. Update / install lz4 tool:
+				1. Update / install curl, jq and lz4 tool:
 			</Typography>
 			<Terminal
 				sx={{ mt: 2 }}
-				cmd='sudo apt update &amp;&amp; sudo apt install liblz4-tool'
+				cmd='sudo apt update &amp;&amp; sudo apt install liblz4-tool jq curl'
 			/>
 			<Typography variant='h4' marginBottom={3} marginTop={2}>
 				2. Download and extract the files:
@@ -30,6 +30,15 @@ export default function QuickDownload() {
 				cmd='curl -o - https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/'
 				// subcmd='This will add/replace the data in /home/cardano/cnode/db directory'
 			/>
+			<Box sx={terminalContainer} marginTop={4}>
+				<Alert severity='info' marginBottom={3} marginTop={1}>
+					<AlertTitle>Info</AlertTitle>
+					Here is info how to download "manualy" the snapshot:{' '}
+					<a href='http://cSnapshots.io/about#Manual_download'>
+						http://cSnapshots.io/about#Manual_download
+					</a>
+				</Alert>
+			</Box>
 		</Box>
 	);
 }
