@@ -34,8 +34,8 @@ export default function QuickDownload() {
 				<Alert severity='info' marginBottom={3} marginTop={1}>
 					<AlertTitle>Info</AlertTitle>
 					Here is info how to download "manualy" the snapshot:{' '}
-					<a href='http://cSnapshots.io/about#Manual_download'>
-						http://cSnapshots.io/about#Manual_download
+					<a href='https://cSnapshots.io/about#Manual_download'>
+						https://cSnapshots.io/about#Manual_download
 					</a>
 				</Alert>
 			</Box>
