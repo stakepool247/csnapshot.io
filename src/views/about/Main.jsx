@@ -73,7 +73,7 @@ export default function Main() {
 								For Mainnet:
 							</Typography>
 							<Code
-								text='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  -output
+								text='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  --output
 							mainnet-snapshot.tar.lz4'
 							/>
 							<br />
@@ -81,7 +81,7 @@ export default function Main() {
 								For Testnet:
 							</Typography>
 							<Code
-								text='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  -output
+								text='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  --output
 							testnet-snapshot.tar.lz4'
 							/>
 							<br />
@@ -126,7 +126,7 @@ export default function Main() {
 					2. Downloading Database:
 				</Typography>
 				<Terminal
-					cmd='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  -output
+					cmd='curl https://download.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  --output
 							mainnet-snapshot.tar.lz4'
 				/>
 				<Typography marginLeft={2} marginTop={2}>
@@ -145,7 +145,7 @@ export default function Main() {
 					2. Downloading Database:
 				</Typography>
 				<Terminal
-					cmd='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  -output
+					cmd='curl https://download.csnapshots.io/testnet/$(curl -s https://data.csnapshots.io/testnet-db-snapshot.json | jq -r .[].file_name )  --output
 							testnet-snapshot.tar.lz4'
 				/>
 				<Typography marginLeft={2} marginTop={2}>
