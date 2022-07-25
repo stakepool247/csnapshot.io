@@ -19,11 +19,11 @@ export default function TableHero({ url, cardanoChain }) {
 				{
 					id: 394938,
 					icon: '/images/driver1.svg',
-					text: 'Cardano Chain',
+					text: 'Node Version',
 				},
 				{
 					id: 409304,
-					text: cardanoChain,
+					text: result?.node_version,
 				},
 				{
 					id: 435894,
@@ -32,7 +32,7 @@ export default function TableHero({ url, cardanoChain }) {
 				},
 				{
 					id: 3478783,
-					text: '334',
+					text: result?.epoch,
 				},
 			],
 			[
@@ -177,7 +177,14 @@ export default function TableHero({ url, cardanoChain }) {
 				}}
 			>
 				<Typography variant='h4' marginBottom={3}>
-					Cardano {cardanoChain} full blockcain DB
+					Cardano{' '}
+					<Box
+						component='span'
+						sx={{ color: 'primary.main', fontWeight: 'bold' }}
+					>
+						{cardanoChain}
+					</Box>{' '}
+					full blockcain DB
 				</Typography>
 				<Box sx={{ overflowX: 'scroll' }}>
 					<Box
