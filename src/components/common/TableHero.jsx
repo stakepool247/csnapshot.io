@@ -122,7 +122,7 @@ export default function TableHero({ url, cardanoChain }) {
 						<>
 							<a
 								href={
-									'https://download.csnapshots.io/' +
+									'https://downloads.csnapshots.io/' +
 									cardanoChain.toLowerCase() +
 									'/' +
 									result?.file_name
@@ -138,7 +138,7 @@ export default function TableHero({ url, cardanoChain }) {
 									}}
 									fontWeight='400'
 								>
-									{'https://download.csnapshots.io/' +
+									{'https://downloads.csnapshots.io/' +
 										cardanoChain.toLowerCase() +
 										'/' +
 										result?.file_name}
