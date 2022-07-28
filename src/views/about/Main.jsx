@@ -125,7 +125,7 @@ export default function Main() {
 				<Typography marginLeft={2} marginTop={2}>
 					2. Downloading Database:
 				</Typography>
-				<Terminal cmd='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://data.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.lz4' />
+				<Terminal cmd='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.lz4' />
 				<Typography marginLeft={2} marginTop={2}>
 					3. Extracting Database:
 				</Typography>
