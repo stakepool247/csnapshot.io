@@ -48,6 +48,14 @@ export const appsDetails = [
 		downloadLink: '#',
 		seemore: '/testnet',
 	},
+	{
+		id: 649,
+		title: 'Mainnet 1.35.x',
+		subtitle: 'networkMagic: 1097911063',
+		description: 'Cardano Mainnet Snapshot for the cardano node v. 1.35.x',
+		downloadLink: '#',
+		seemore: '/mainnet-1-35-x',
+	},
 ];
 
 export const pages = [

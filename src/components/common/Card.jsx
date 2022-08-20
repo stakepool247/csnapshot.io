@@ -40,7 +40,9 @@ export default function Card({ datam }) {
 				<Link to={seemore}>
 					<Button
 						variant='contained'
-						endIcon={<img src='/images/import.svg' width='24' height='24' />}
+						endIcon={
+							<img src='/images/import.svg' width='24' height='24' alt='' />
+						}
 						sx={{
 							backgroundImage: (theme) => theme.palette.linear.main,
 							'& .MuiButton-endIcon': {
