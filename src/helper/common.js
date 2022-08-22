@@ -43,7 +43,7 @@ export const appsDetails = [
 	{
 		id: 649,
 		title: 'Testnet Snapshot',
-		subtitle: 'networkMagic: 1097911063',
+		subtitle: 'networkMagic: 1',
 		description: 'Cardano Full Blockchain Snapshot for the Testnet',
 		downloadLink: '#',
 		seemore: '/testnet',
