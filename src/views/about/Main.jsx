@@ -73,7 +73,7 @@ export default function Main() {
 								For Mainnet:
 							</Typography>
 							<Code
-								text='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output
+								text='curl https://downloads.csnapshots.io/snapshots/mainnet/$(curl -s https://downloads.csnapshots.io/snapshots/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output
 							mainnet-snapshot.tar.lz4'
 							/>
 							<br />
@@ -81,7 +81,7 @@ export default function Main() {
 								For Testnet:
 							</Typography>
 							<Code
-								text='curl https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output
+								text='curl https://downloads.csnapshots.io/snapshots/testnet/$(curl -s https://downloads.csnapshots.io/snapshots/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output
 							testnet-snapshot.tar.lz4'
 							/>
 							<br />
@@ -93,11 +93,11 @@ export default function Main() {
 							</Typography>
 						</Typography>
 						<Typography variant='h5'>For Mainnet:</Typography>
-						<Terminal cmd='curl -o - https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
+						<Terminal cmd='curl -o - https://downloads.csnapshots.io/snapshots/mainnet/$(curl -s https://downloads.csnapshots.io/snapshots/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
 						<Typography variant='h5' paddingTop={4}>
 							For Testnet:
 						</Typography>
-						<Terminal cmd='curl -o - https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
+						<Terminal cmd='curl -o - https://downloads.csnapshots.io/snapshots/testnet/$(curl -s https://downloads.csnapshots.io/snapshots/testnet/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
 					</Box>
 				</Typography>
 			</Box>
@@ -125,7 +125,7 @@ export default function Main() {
 				<Typography marginLeft={2} marginTop={2}>
 					2. Downloading Database:
 				</Typography>
-				<Terminal cmd='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.lz4' />
+				<Terminal cmd='curl https://downloads.csnapshots.io/snapshots/mainnet/$(curl -s https://downloads.csnapshots.io/snapshots/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.lz4' />
 				<Typography marginLeft={2} marginTop={2}>
 					3. Extracting Database:
 				</Typography>
@@ -141,7 +141,7 @@ export default function Main() {
 				<Typography marginLeft={2} marginTop={2}>
 					2. Downloading Database:
 				</Typography>
-				<Terminal cmd='curl https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output testnet-snapshot.tar.lz4' />
+				<Terminal cmd='curl https://downloads.csnapshots.io/snapshots/testnet/$(curl -s https://downloads.csnapshots.io/snapshots/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output testnet-snapshot.tar.lz4' />
 				<Typography marginLeft={2} marginTop={2}>
 					3. Extracting Database:
 				</Typography>
