@@ -75,10 +75,5 @@ export const pages = [
 		url: '/about',
 		linkType: 'text',
 	},
-	{
-		id: 6675659,
-		name: 'Support us',
-		url: '/support-us',
-		linkType: 'button',
-	},
+
 ];
