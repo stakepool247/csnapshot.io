@@ -9,6 +9,7 @@ import Mainnet from './views/mainnet';
 import Testnet from './views/testnet';
 import About from './views/about';
 import SnapshotDownload from './views/snapshotDownload';
+import Support from './views/support';
 
 export default function App() {
 	return (
@@ -27,6 +28,7 @@ export default function App() {
 							path='/testnet-snapshot'
 							element={<SnapshotDownload chain='testnet' />}
 						/>
+						<Route path='/support-us' element={<Support />} />
 						<Route path='/about' element={<About />} />
 					</Route>
 				</Routes>
