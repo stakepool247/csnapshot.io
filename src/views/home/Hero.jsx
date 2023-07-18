@@ -4,8 +4,15 @@ import Stack from '@mui/material/Stack';
 import Card from '../../components/common/Card';
 import HeroLayout from '../../components/common/HeroLayout';
 import { appsDetails } from '../../helper/common';
+import Alert from '@mui/material/Alert';
+import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import AlertTitle from '@mui/material/AlertTitle';
+
 
 export default function Hero() {
+	const isMobile = useMediaQuery('(max-width:800px)');
+
 	return (
 		<Box component='section'>
 			<HeroLayout
@@ -40,6 +47,21 @@ export default function Hero() {
 					<Card datam={rest} key={id} />
 				))}
 			</Stack>
+			<Box component='br' sx={{ display: { xs: 'none', md: 'block' } }} />{' '}
+			{!isMobile && (
+        <Container maxWidth="xl" sx={{ textAlign: 'center' }}>
+          <Alert  severity="warning">
+		  
+            <Typography textAlign="left" variant="h5">
+			{/* <AlertTitle>Support Needed</AlertTitle> */}
+              <strong>Please support us </strong> in keeping the Cardano Snapshots site operational by donating some ADA to the following address:
+            </Typography>
+            <Typography textAlign="left" variant="h5" component="ib">
+              addr1q8c2gh9q7n4ecuc70yp24hz2nwfv6sak760vmcdym44aatxrnjdz0sgztmp89a9l8lra3nqd59zfaz57ghl53qh7dhssgyfv7y
+            </Typography>
+          </Alert>
+        </Container>
+      )}
 		</Box>
 	);
 }
