@@ -15,7 +15,7 @@ export const heads = [
 		text: 'Manual Download?',
 	},
 	{
-		id: 3243464,
+		id: 3243465,
 		url: '#How_does_it_work',
 		text: 'How does it work ?',
 	},
@@ -55,20 +55,30 @@ export const pages = [
 		id: 98493,
 		name: 'Home',
 		url: '/',
+		linkType: 'text',
 	},
 	{
 		id: 495845,
 		name: 'Mainnet',
 		url: '/mainnet',
+		linkType: 'text',
 	},
 	{
 		id: 435435,
 		name: 'PreProd',
 		url: '/testnet',
+		linkType: 'text',
 	},
 	{
 		id: 5675656,
 		name: 'About',
 		url: '/about',
+		linkType: 'text',
+	},
+	{
+		id: 6675659,
+		name: 'Support us',
+		url: '/support-us',
+		linkType: 'button',
 	},
 ];
