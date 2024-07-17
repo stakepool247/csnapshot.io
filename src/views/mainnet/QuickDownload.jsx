@@ -27,7 +27,7 @@ export default function QuickDownload() {
 				</Alert>
 			</Box>
 			<Terminal
-				cmd='wget -c -O - "https://downloads.csnapshots.io/mainnet/$(wget -qO- https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r '.[].file_name')" | lz4 -c -d - | tar -x -C /home/cardano/cnode/'
+				cmd='wget -c -O - "https://downloads.csnapshots.io/mainnet/$(wget -qO- https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name)" | lz4 -c -d - | tar -x -C /home/cardano/cnode/'
 				// subcmd='This will add/replace the data in /home/cardano/cnode/db directory'
 			/>
 			<Box sx={terminalContainer} marginTop={4}>
