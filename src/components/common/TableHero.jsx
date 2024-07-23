@@ -184,7 +184,7 @@ export default function TableHero({ url, cardanoChain }) {
 					>
 						{cardanoChain}
 					</Box>{' '}
-					full blockcain DB
+					full blockchain DB
 				</Typography>
 				<Box sx={{ overflowX: 'scroll' }}>
 					<Box
