@@ -52,7 +52,7 @@ export default function TableHero({ url, cardanoChain }) {
 				},
 				{
 					id: 3478783,
-					text: 'lz4',
+					text: 'zst',
 				},
 			],
 			[
