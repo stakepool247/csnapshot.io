@@ -25,9 +25,10 @@ export default function Main() {
 				<Typography
 					sx={{ color: (theme) => alpha(theme.palette.text.primary, 0.75) }}
 				>
-					cSnapshots is a Cardano proof-of-stake blockchain snaphsot download
+					cSnapshots is a Cardano proof-of-stake blockchain snapshot download
 					service which helps Cardano Stake Pool Operators (SPO) to synchronize
-					nodes.
+					nodes. We recently switched to using Zstandard (zstd) compression, which
+					reduces download sizes and speeds up the process.
 					<br />
 					<br />
 					This project powered by Stakepool247.io
@@ -53,13 +54,13 @@ export default function Main() {
 					When starting the cardano-node for the first time, you will have to
 					wait for the blockchain to sync. It can take hours or even some days
 					(depending on your server CPU/Network speed). To avoid that, you can
-					download fully synced database and jumpstart your node significantly
+					download a fully synced database and jumpstart your node significantly
 					faster. cSnapshots provides pre-synced Cardano Mainnet and Testnet
-					blockchain database which are updated daily.
+					blockchain databases which are updated daily.
 					<br />
 					<br />
 					In order to fully automate your recovery mechanism, you can use the
-					commandline bellow.
+					commandline below.
 					<br />
 					<br />
 					In the instructions below, we assume that the user is{' '}
@@ -67,37 +68,34 @@ export default function Main() {
 					<Code text='/home/cardano/cnode/db' />.
 					<Box sx={{ mt: 5, mb: 2 }}>
 						<Typography marginBottom={2}>
-							To download a recent snapshot of the database use in your server's
-							terminal one of the following commands: <br />
+							To download a recent snapshot of the database, use your server's
+							terminal and run one of the following commands: <br />
 							<Typography variant='h5' paddingTop={3}>
 								For Mainnet:
 							</Typography>
 							<Code
-								text='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output
-							mainnet-snapshot.tar.lz4'
+								text='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.zst'
 							/>
 							<br />
 							<Typography variant='h5' paddingTop={3}>
 								For Testnet:
 							</Typography>
 							<Code
-								text='curl https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output
-							testnet-snapshot.tar.lz4'
+								text='curl https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output testnet-snapshot.tar.zst'
 							/>
 							<br />
 							<br />
 							<Typography variant='h4' paddingTop={5}>
 								The quick way to download and extract files to{' '}
-								<Code text='/home/cardano/cnode/db' />
-								.:
+								<Code text='/home/cardano/cnode/db' />:
 							</Typography>
 						</Typography>
 						<Typography variant='h5'>For Mainnet:</Typography>
-						<Terminal cmd='curl -o - https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
+						<Terminal cmd='curl -o - https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name ) | zstd -d -c | tar -x -C /home/cardano/cnode/' />
 						<Typography variant='h5' paddingTop={4}>
 							For Testnet:
 						</Typography>
-						<Terminal cmd='curl -o - https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name ) | lz4 -c -d - | tar -x -C /home/cardano/cnode/' />
+						<Terminal cmd='curl -o - https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name ) | zstd -d -c | tar -x -C /home/cardano/cnode/' />
 					</Box>
 				</Typography>
 			</Box>
@@ -118,34 +116,32 @@ export default function Main() {
 					For Mainnet:
 				</Typography>
 				<Typography marginLeft={2} marginTop={2}>
-					{' '}
 					1. Setting Database folder:
 				</Typography>
 				<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
 				<Typography marginLeft={2} marginTop={2}>
 					2. Downloading Database:
 				</Typography>
-				<Terminal cmd='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.lz4' />
+				<Terminal cmd='curl https://downloads.csnapshots.io/mainnet/$(curl -s https://downloads.csnapshots.io/mainnet/mainnet-db-snapshot.json | jq -r .[].file_name )  --output mainnet-snapshot.tar.zst' />
 				<Typography marginLeft={2} marginTop={2}>
 					3. Extracting Database:
 				</Typography>
-				<Terminal cmd='lz4 -dvc --no-sparse mainnet-snapshot.tar.lz4 | tar x -C ${CARDANO_BASE}' />
+				<Terminal cmd='zstd -dvc mainnet-snapshot.tar.zst | tar x -C ${CARDANO_BASE}' />
 				<Typography variant='h5' paddingTop={3}>
 					For Testnet:
 				</Typography>
 				<Typography marginLeft={2} marginTop={2}>
-					{' '}
 					1. Setting Database folder:
 				</Typography>
 				<Terminal cmd='export CARDANO_BASE="/home/cardano/cnode/"' />
 				<Typography marginLeft={2} marginTop={2}>
 					2. Downloading Database:
 				</Typography>
-				<Terminal cmd='curl https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output testnet-snapshot.tar.lz4' />
+				<Terminal cmd='curl https://downloads.csnapshots.io/testnet/$(curl -s https://downloads.csnapshots.io/testnet/testnet-db-snapshot.json | jq -r .[].file_name )  --output testnet-snapshot.tar.zst' />
 				<Typography marginLeft={2} marginTop={2}>
 					3. Extracting Database:
 				</Typography>
-				<Terminal cmd='lz4 -dvc --no-sparse testnet-snapshot.tar.lz4 | tar x -C ${CARDANO_BASE}' />
+				<Terminal cmd='zstd -dvc testnet-snapshot.tar.zst | tar x -C ${CARDANO_BASE}' />
 			</Box>
 			<Box sx={{ mb: 8 }} className='bookmarkOffset' id='How_does_it_work'>
 				<Stack
@@ -165,9 +161,9 @@ export default function Main() {
 					component='div'
 				>
 					<Typography sx={{ mb: 2 }}>
-						Every day we are generating new snapshots and uploading to CDN
-						service which redistributes the database to servers around the world
-						for faster download speeds
+						Every day we generate new snapshots and upload them to a CDN
+						service that redistributes the database to servers around the world
+						for faster download speeds.
 					</Typography>
 				</Typography>
 			</Box>
