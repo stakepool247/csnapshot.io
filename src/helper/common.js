@@ -34,7 +34,7 @@ export const heads = [
 export const appsDetails = [
 	{
 		id: 349,
-		title: 'Mainnet Snapshot',
+		title: 'Cardano Mainnet',
 		subtitle: 'networkMagic: 764824073',
 		description: 'Cardano Full Blockchain Snapshot for the Mainnet ',
 		downloadLink: '#',
@@ -42,7 +42,7 @@ export const appsDetails = [
 	},
 	{
 		id: 649,
-		title: 'PreProd Snapshot',
+		title: 'Cardano PreProd',
 		subtitle: 'networkMagic: 1',
 		description: 'Cardano Full Blockchain Snapshot for the Testnet',
 		downloadLink: '#',

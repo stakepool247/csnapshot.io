@@ -8,6 +8,7 @@ import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import AlertTitle from '@mui/material/AlertTitle';
+import LatestMessages from '../../components/common/LatestMessages'
 
 
 export default function Hero() {
@@ -50,7 +51,8 @@ export default function Hero() {
 			<Box component='br' sx={{ display: { xs: 'none', md: 'block' } }} />{' '}
 			{!isMobile && (
         <Container maxWidth="xl" sx={{ textAlign: 'center' }}>
-          <Alert  severity="warning">
+			
+          <Alert  severity="info">
 		  
             <Typography textAlign="left" variant="h5">
 			{/* <AlertTitle>Support Needed</AlertTitle> */}
@@ -60,6 +62,7 @@ export default function Hero() {
               addr1q8c2gh9q7n4ecuc70yp24hz2nwfv6sak760vmcdym44aatxrnjdz0sgztmp89a9l8lra3nqd59zfaz57ghl53qh7dhssgyfv7y
             </Typography>
           </Alert>
+		  <LatestMessages />
         </Container>
       )}
 		</Box>
