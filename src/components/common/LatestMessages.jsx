@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { List, ListItem, ListItemText, Typography, Paper } from "@mui/material";
+import { alpha } from '@mui/material/styles';
 
 const LatestMessages = () => {
   const [messages, setMessages] = useState([]);
@@ -15,7 +16,13 @@ const LatestMessages = () => {
       const response = await axios.get(
         "https://us-central1-stakepool247-app.cloudfunctions.net/getKoiosData"
       );
-      setMessages(response.data.messages);
+
+      // Sort messages by blockTime in ascending order and get the first 10
+      const sortedMessages = response.data.messages
+        .sort((a, b) => a.blockTime - b.blockTime)
+        .slice(0, 10);
+
+      setMessages(sortedMessages);
     } catch (err) {
       console.error("Error fetching messages:", err);
       setError("Failed to load messages. Please try again later.");
@@ -44,7 +51,15 @@ const LatestMessages = () => {
   return (
     <Paper style={{ padding: "20px", margin: "20px" }}>
       <Typography variant="h4" gutterBottom>
-        Latest Messages (From transaction message/comment metadata)
+        10 Latest Messages 
+        <Typography
+				marginBottom={3}
+				variant='body2'
+				sx={{ color: (theme) => alpha(theme.palette.text.primary, 0.5) }}
+			>
+			
+        (From transaction message/comment metadata)
+        </Typography>
       </Typography>
       {loading && <Typography>Loading messages...</Typography>}
       {error && <Typography color="error">{error}</Typography>}
