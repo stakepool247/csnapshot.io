@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box'
 import Hero from './Hero'
+
+
 import { useEffect } from 'react'
 
 export default function Home() {
@@ -10,6 +12,7 @@ export default function Home() {
 	return (
 		<Box component="main">
 			<Hero />
+			
 		</Box>
 	)
 }
